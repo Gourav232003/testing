@@ -1,0 +1,25 @@
+# Copy this to .env file
+# MongoDB Atlas Configuration (Cloud Database)
+MONGODB_URI=mongodb+srv://demo:demo123@cluster0.mongodb.net/ecofarm-quest?retryWrites=true&w=majority
+
+# JWT Configuration
+SECRET_KEY=your-secret-key-here-change-in-production
+JWT_SECRET_KEY=jwt-secret-string-change-in-production
+
+# Flask Configuration
+FLASK_ENV=development
+DEBUG=True
+
+# CORS Configuration
+FRONTEND_URL=http://localhost:3000
+
+# Mail Configuration (Optional)
+MAIL_SERVER=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USE_TLS=True
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_DEFAULT_SENDER=noreply@ecofarmquest.com
+
+
+

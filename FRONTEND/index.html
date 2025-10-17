@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌱 EcoFarm Quest - Enhanced Sustainable Farming Hub</title>
+    <!-- cache-bust query param to ensure updated styles load -->
+    <link rel="stylesheet" href="style.css?v=2">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div id="backgroundParticles" class="background-particles">
+        <div class="particle butterfly">🦋</div>
+        <div class="particle leaf">🍃</div>
+        <div class="particle seed">🌱</div>
+        <div class="particle flower">🌸</div>
+        <div class="particle bee">🐝</div>
+    </div>
+
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="screen active">
+        <div class="animated-welcome-bg">
+            <div class="welcome-container">
+                <h1 class="pixel-title">🌱 EcoFarm Quest</h1>
+                <p class="pixel-subtitle">Transform your farm with AI-powered sustainable farming!</p>
+                <div class="animated-farm-scene">
+                    <div class="animated-sun">☀️</div>
+                    <div class="floating-clouds">☁️ ☁️ ☁️</div>
+                    <div class="swaying-trees">🌳🌲🌳🌴</div>
+                    <div class="growing-crops">🌾🌽🥕🍅🥬</div>
+                    <div class="animal-parade">
+                        <div class="animal-avatar cow">🐄</div>
+                        <div class="animal-avatar chicken">🐔</div>
+                        <div class="animal-avatar goat">🐐</div>
+                        <div class="animal-avatar rabbit">🐰</div>
+                    </div>
+                </div>
+                <div class="welcome-buttons">
+                    <button class="btn btn--primary enhanced-btn" onclick="showScreen('loginScreen')">🚀 Start Your Journey</button>
+                    <button class="btn btn--outline enhanced-btn" onclick="showScreen('aboutScreen')">📖 Learn More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Screen -->
+    <div id="aboutScreen" class="screen">
+        <div class="container">
+            <div class="action-buttons-top-right">
+                <button class="btn btn--secondary enhanced-btn" onclick="showScreen('welcomeScreen')">← Back</button>
+            </div>
+            <h2>About EcoFarm Quest</h2>
+            <div class="about-content">
+                <div class="feature-grid">
+                    <div class="feature-card enhanced-card">
+                        <div class="feature-icon">🎮</div>
+                        <h3>Interactive Learning</h3>
+                        <p>Engaging courses with gamified quizzes, progress tracking, and certification badges</p>
+                    </div>
+                    <div class="feature-card enhanced-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>Community Discussions</h3>
+                        <p>Connect with farmers worldwide, share experiences, and unlock achievements together</p>
+                    </div>
+                    <div class="feature-card enhanced-card">
+                        <div class="feature-icon">👤</div>
+                        <h3>Profile Management</h3>
+                        <p>Customize your farming profile, manage settings, and track your sustainable impact</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Login/Register Screen -->
+    <div id="loginScreen" class="screen">
+        <div class="container">
+            <div class="action-buttons-top-right">
+                <button class="btn btn--secondary enhanced-btn" onclick="showScreen('welcomeScreen')">← Back</button>
+            </div>
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab" onclick="switchAuthTab('login')">Login</button>
+                    <button class="auth-tab active" onclick="switchAuthTab('register')">Register</button>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form">
+                    <h2>Welcome Back, Farmer!</h2>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="password-field">
+                            <input type="password" id="loginPassword" name="password" class="form-control" required>
+                            <button type="button" class="btn toggle-password" data-target="loginPassword" aria-label="Toggle password visibility">👁️</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width enhanced-btn">🔐 Login</button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" class="auth-form active">
+                    <h2>Join the Sustainable Revolution!</h2>
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="password-field">
+                            <input type="password" id="registerPassword" name="password" class="form-control" required>
+                            <button type="button" class="btn toggle-password" data-target="registerPassword" aria-label="Toggle password visibility">👁️</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" name="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Farm Location</label>
+                        <input type="text" name="location" class="form-control" placeholder="Green Valley Village" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Farm Size</label>
+                        <select name="farm_size" class="form-control" required>
+                            <option value="">Select farm size</option>
+                            <option value="small">Small (< 2 acres)</option>
+                            <option value="medium">Medium (2-10 acres)</option>
+                            <option value="large">Large (> 10 acres)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width enhanced-btn">🌱 Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Main Dashboard -->
+    <div id="dashboardScreen" class="screen">
+        <!-- Modern Tab Navigation -->
+        <nav class="modern-tab-nav">
+            <div class="nav-brand">🌱 EcoFarm Quest</div>
+            <div class="tab-navigation">
+                <button class="tab-btn active" data-tab="overview" onclick="showDashboardSection('overview')">
+                    <span class="tab-icon">🏠</span>
+                    <span class="tab-label">Overview</span>
+                </button>
+                <button class="tab-btn" data-tab="learning" onclick="showDashboardSection('learning')">
+                    <span class="tab-icon">📚</span>
+                    <span class="tab-label">Learning</span>
+                </button>
+                <button class="tab-btn" data-tab="community" onclick="showDashboardSection('community')">
+                    <span class="tab-icon">👥</span>
+                    <span class="tab-label">Community</span>
+                </button>
+                <button class="tab-btn" data-tab="account" onclick="showDashboardSection('account')">
+                    <span class="tab-icon">👤</span>
+                    <span class="tab-label">Account</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Overview Tab -->
+        <div id="overviewSection" class="dashboard-section active">
+            <div class="container">
+                <div class="dashboard-header">
+                    <div class="farmer-greeting">
+                        <h1>Welcome back, <span id="farmerName">Farmer John</span>!</h1>
+                        <p>Level <span id="farmerLevel">3</span> • <span id="farmerTitle">Sustainability Expert</span></p>
+                    </div>
+                    <div class="animated-farmer-avatar" id="dashboardAvatar">
+                        <div class="animal-character cow-avatar breathing">🐄</div>
+                    </div>
+                </div>
+
+                <div class="status-cards-grid">
+                    <div class="status-card xp-card">
+                        <div class="status-icon pulsing">⭐</div>
+                        <div class="status-info">
+                            <div class="status-label">Knowledge Points</div>
+                            <div class="status-value" id="knowledgePoints">1,250</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 83%" id="knowledgeBar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-card streak-card">
+                        <div class="status-icon bouncing">🔥</div>
+                        <div class="status-info">
+                            <div class="status-label">Learning Streak</div>
+                            <div class="status-value" id="learningStreak">7 days</div>
+                        </div>
+                    </div>
+                    <div class="status-card courses-card">
+                        <div class="status-icon rotating">📚</div>
+                        <div class="status-info">
+                            <div class="status-label">Courses Completed</div>
+                            <div class="status-value" id="coursesCompleted">1 / 5</div>
+                        </div>
+                    </div>
+                    <div class="status-card certificates-card">
+                        <div class="status-icon">🏅</div>
+                        <div class="status-info">
+                            <div class="status-label">Certificates Earned</div>
+                            <div class="status-value" id="certificatesEarned">1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="card-header">
+                            <h3>📚 Recent Learning Activity</h3>
+                        </div>
+                        <div class="learning-activity">
+                            <div class="activity-item">
+                                <div class="activity-icon">✅</div>
+                                <div class="activity-text">Completed "Crop Rotation Strategies"</div>
+                                <div class="activity-time">Today</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">📖</div>
+                                <div class="activity-text">Started "Soil Health Fundamentals"</div>
+                                <div class="activity-time">Yesterday</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="card-header">
+                            <h3>🎯 Learning Goals</h3>
+                        </div>
+                        <div class="goals-progress">
+                            <div class="goal-item">
+                                <span class="goal-text">Complete 3 courses this month</span>
+                                <div class="goal-progress-bar">
+                                    <div class="progress-fill" style="width: 33%"></div>
+                                </div>
+                                <span class="goal-progress-text">1/3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Learning Tab -->
+        <div id="learningSection" class="dashboard-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📚 Interactive Learning Hub</h2>
+                    <div class="action-buttons-top-right">
+                        <button class="btn btn--secondary enhanced-btn" onclick="showCertificates()">🏅 My Certificates</button>
+                        <button class="btn btn--primary enhanced-btn" onclick="continueLearning()">Continue Learning</button>
+                    </div>
+                </div>
+
+                <!-- Learning Dashboard -->
+                <div class="learning-dashboard">
+                    <div class="learning-stats-row">
+                        <div class="learning-stat-card">
+                            <div class="stat-icon">📖</div>
+                            <div class="stat-info">
+                                <div class="stat-number" id="totalLessons">21</div>
+                                <div class="stat-label">Lessons Completed</div>
+                            </div>
+                        </div>
+                        <div class="learning-stat-card">
+                            <div class="stat-icon">🔥</div>
+                            <div class="stat-info">
+                                <div class="stat-number" id="streakDays">7</div>
+                                <div class="stat-label">Day Streak</div>
+                            </div>
+                        </div>
+                        <div class="learning-stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-info">
+                                <div class="stat-number" id="currentLevel">3</div>
+                                <div class="stat-label">Current Level</div>
+                            </div>
+                        </div>
+                        <div class="learning-stat-card">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-info">
+                                <div class="stat-number" id="nextLevelPoints">250</div>
+                                <div class="stat-label">Points to Next Level</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Categories Filter -->
+                <div class="course-categories">
+                    <button class="category-btn active" onclick="filterCourses('all')">🌟 All Courses</button>
+                    <button class="category-btn" onclick="filterCourses('water')">💧 Water Management</button>
+                    <button class="category-btn" onclick="filterCourses('soil')">🌱 Soil Management</button>
+                    <button class="category-btn" onclick="filterCourses('pest')">🐛 Crop Protection</button>
+                    <button class="category-btn" onclick="filterCourses('sustainable')">🌿 Sustainable Agriculture</button>
+                </div>
+
+                <!-- Enhanced Course Cards -->
+                <div class="courses-grid" id="coursesGrid">
+                    <!-- Courses will be populated by JavaScript -->
+                </div>
+
+                <!-- Seasonal Content Recommendations -->
+                <div class="seasonal-content">
+                    <h3>🍂 Seasonal Learning Recommendations</h3>
+                    <div class="seasonal-cards">
+                        <div class="seasonal-card">
+                            <div class="seasonal-icon">🍂</div>
+                            <h4>Post-Harvest Soil Care</h4>
+                            <p>Learn about soil preparation for the next growing season</p>
+                            <button class="btn btn--outline enhanced-btn">Start Course</button>
+                        </div>
+                        <div class="seasonal-card">
+                            <div class="seasonal-icon">💧</div>
+                            <h4>Winter Water Management</h4>
+                            <p>Optimize water storage and conservation for winter months</p>
+                            <button class="btn btn--outline enhanced-btn">Start Course</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Community Tab -->
+        <div id="communitySection" class="dashboard-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>👥 Farming Community</h2>
+                    <div class="action-buttons-top-right">
+                        <button class="btn btn--secondary enhanced-btn" onclick="createNewPost()">✍️ New Post</button>
+                        <button class="btn btn--primary enhanced-btn" onclick="refreshCommunity()">🔄 Refresh</button>
+                    </div>
+                </div>
+
+                <!-- Community Sub-tabs -->
+                <div class="community-tabs">
+                    <button class="community-tab active" onclick="showCommunityTab('discussions')">💬 Discussions</button>
+                    <button class="community-tab" onclick="showCommunityTab('achievements')">🎖️ Achievements</button>
+                    <button class="community-tab" onclick="showCommunityTab('leaderboard')">🏆 Leaderboard</button>
+                </div>
+
+                <!-- Discussions Tab -->
+                <div id="discussionsTab" class="community-content active">
+                    <div class="discussions-container">
+                        <div class="discussion-controls">
+                            <div class="search-bar">
+                                <input type="text" class="form-control" placeholder="Search discussions..." id="discussionSearch">
+                                <button class="btn btn--primary enhanced-btn" onclick="searchDiscussions()">🔍</button>
+                            </div>
+                            <div class="filter-controls">
+                                <select class="form-control" id="discussionFilter">
+                                    <option value="all">All Categories</option>
+                                    <option value="water">Water Management</option>
+                                    <option value="soil">Soil Management</option>
+                                    <option value="pest">Pest Control</option>
+                                    <option value="sustainable">Sustainable Practices</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="discussions-feed" id="discussionsFeed">
+                            <!-- Discussions will be populated by JavaScript -->
+                        </div>
+
+                        <!-- Post Creation Form -->
+                        <div class="new-post-form hidden" id="newPostForm">
+                            <h4>Create New Discussion</h4>
+                            <div class="form-group">
+                                <label class="form-label">Topic Title</label>
+                                <input type="text" class="form-control" id="postTitle" placeholder="What would you like to discuss?">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Category</label>
+                                <select class="form-control" id="postCategory">
+                                    <option value="general">General Discussion</option>
+                                    <option value="water">Water Management</option>
+                                    <option value="soil">Soil Health</option>
+                                    <option value="pest">Pest Control</option>
+                                    <option value="equipment">Equipment & Tools</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" id="postMessage" rows="4" placeholder="Share your thoughts, questions, or experiences..."></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn btn--secondary enhanced-btn" onclick="cancelNewPost()">Cancel</button>
+                                <button class="btn btn--primary enhanced-btn" onclick="submitNewPost()">📝 Post Discussion</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements Tab -->
+                <div id="achievementsTab" class="community-content">
+                    <div class="achievements-container">
+                        <div class="achievement-categories" id="achievementCategories">
+                            <!-- Achievement categories will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leaderboard Tab -->
+                <div id="leaderboardTab" class="community-content">
+                    <div class="leaderboard-container">
+                        <div class="leaderboard-controls">
+                            <div class="leaderboard-categories">
+                                <button class="leaderboard-category active" onclick="switchLeaderboard('village')">🏘️ Village</button>
+                                <button class="leaderboard-category" onclick="switchLeaderboard('district')">🌆 District</button>
+                                <button class="leaderboard-category" onclick="switchLeaderboard('global')">🌍 Global</button>
+                            </div>
+                        </div>
+                        <div class="leaderboard-list" id="leaderboardList">
+                            <!-- Leaderboard will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Account Tab -->
+        <div id="accountSection" class="dashboard-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>👤 Account Management</h2>
+                    <div class="action-buttons-top-right">
+                        <button class="btn btn--secondary enhanced-btn" onclick="exportUserData()">📤 Export Data</button>
+                        <button class="btn btn--primary enhanced-btn" onclick="saveProfileChanges()">💾 Save Changes</button>
+                    </div>
+                </div>
+
+                <!-- Account Sub-tabs -->
+                <div class="account-tabs">
+                    <button class="account-tab active" onclick="showAccountTab('profile')">👤 Profile</button>
+                    <button class="account-tab" onclick="showAccountTab('avatar')">🐄 Avatar</button>
+                    <button class="account-tab" onclick="showAccountTab('settings')">⚙️ Settings</button>
+                    <button class="account-tab" onclick="showAccountTab('data')">📊 Data & Privacy</button>
+                    <button class="account-tab" onclick="showAccountTab('support')">❓ Help & Support</button>
+                </div>
+
+                <!-- Profile Tab -->
+                <div id="profileTab" class="account-content active">
+                    <div class="profile-editing-container">
+                        <div class="profile-header-edit">
+                            <div class="profile-avatar-section">
+                                <div class="profile-avatar-large" id="profileAvatarEdit">
+                                    <div class="animal-character cow-avatar breathing">🐄</div>
+                                </div>
+                                <button class="btn btn--outline enhanced-btn" onclick="showAccountTab('avatar')">Change Avatar</button>
+                            </div>
+                            <div class="profile-basic-info">
+                                <div class="form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="profileName" value="Farmer John">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="profileEmail" value="farmer@example.com">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-details-form">
+                            <h3>🚜 Farm Details</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="profilePhone" value="+91 98765 43210">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Farm Location</label>
+                                    <input type="text" class="form-control" id="profileLocation" value="Green Valley Village">
+                                </div>
+                            <div class="form-group">
+                                <label class="form-label">Farm Size</label>
+                                <select id="profileFarmSize" class="form-control">
+                                    <option value="">Select farm size</option>
+                                    <option value="small">Small (&lt; 2 acres)</option>
+                                    <option value="medium">Medium (2-10 acres)</option>
+                                    <option value="large">Large (&gt; 10 acres)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Primary Crops</label>
+                                <input type="text" class="form-control" id="profileCrops" value="Rice, Wheat, Vegetables">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Water Source</label>
+                                <select class="form-control" id="profileWaterSource">
+                                    <option value="borewell" selected>Borewell</option>
+                                    <option value="canal">Canal</option>
+                                    <option value="river">River</option>
+                                    <option value="rainwater">Rainwater Harvesting</option>
+                                    <option value="mixed">Mixed Sources</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avatar Tab -->
+                <div id="avatarTab" class="account-content">
+                    <div class="avatar-selection-container">
+                        <div class="avatar-preview-section">
+                            <div class="current-avatar-display">
+                                <div id="selectedAvatarPreview" class="animal-character cow-avatar breathing">🐄</div>
+                                <div class="avatar-info">
+                                    <h3 id="selectedAvatarName">Gau Mata</h3>
+                                    <p id="selectedAvatarType">Dairy Specialist</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="avatar-options-grid" id="avatarOptionsGrid">
+                            <!-- Avatar options will be populated by JavaScript -->
+                        </div>
+
+                        <div class="avatar-customization">
+                            <h4>🎨 Customization Options</h4>
+                            <div class="customization-options" id="customizationOptions">
+                                <!-- Customization options will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div id="settingsTab" class="account-content">
+                    <div class="settings-container">
+                        <div class="settings-section">
+                            <h3>🔔 Notification Preferences</h3>
+                            <div class="settings-grid">
+                                <div class="setting-item">
+                                    <label class="setting-label">
+                                        <input type="checkbox" id="questReminders" checked>
+                                        <span class="setting-text">Quest Reminders</span>
+                                    </label>
+                                    <p class="setting-description">Get notified about new quests and deadlines</p>
+                                </div>
+                                <div class="setting-item">
+                                    <label class="setting-label">
+                                        <input type="checkbox" id="communityUpdates" checked>
+                                        <span class="setting-text">Community Updates</span>
+                                    </label>
+                                    <p class="setting-description">Receive updates from community discussions</p>
+                                </div>
+                                <div class="setting-item">
+                                    <label class="setting-label">
+                                        <input type="checkbox" id="weatherAlerts" checked>
+                                        <span class="setting-text">Weather Alerts</span>
+                                    </label>
+                                    <p class="setting-description">Get weather warnings and farming recommendations</p>
+                                </div>
+                                <div class="setting-item">
+                                    <label class="setting-label">
+                                        <input type="checkbox" id="achievementNotifications" checked>
+                                        <span class="setting-text">Achievement Notifications</span>
+                                    </label>
+                                    <p class="setting-description">Celebrate when you unlock new achievements</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>🔒 Privacy Controls</h3>
+                            <div class="settings-grid">
+                                <div class="setting-item">
+                                    <label class="setting-label">Profile Visibility</label>
+                                    <select class="form-control" id="profileVisibility">
+                                        <option value="public">Public</option>
+                                        <option value="community" selected>Community Only</option>
+                                        <option value="private">Private</option>
+                                    </select>
+                                    <p class="setting-description">Control who can see your profile information</p>
+                                </div>
+                                <div class="setting-item">
+                                    <label class="setting-label">
+                                        <input type="checkbox" id="achievementSharing" checked>
+                                        <span class="setting-text">Share Achievements</span>
+                                    </label>
+                                    <p class="setting-description">Allow others to see your achievements</p>
+                                </div>
+                                <div class="setting-item">
+                                    <label class="setting-label">
+                                        <input type="checkbox" id="progressSharing" checked>
+                                        <span class="setting-text">Share Learning Progress</span>
+                                    </label>
+                                    <p class="setting-description">Display your learning progress to others</p>
+                                </div>
+                                <div class="setting-item">
+                                    <label class="setting-label">
+                                        <input type="checkbox" id="locationSharing">
+                                        <span class="setting-text">Share Location</span>
+                                    </label>
+                                    <p class="setting-description">Show your farm location to other farmers</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>🌐 Language & Theme</h3>
+                            <div class="settings-grid">
+                                <div class="setting-item">
+                                    <label class="setting-label">Language</label>
+                                    <select class="form-control" id="languageSetting">
+                                        <option value="en" selected>English</option>
+                                        <option value="hi">हिंदी (Hindi)</option>
+                                        <option value="bn">বাংলা (Bengali)</option>
+                                        <option value="te">తెలుగు (Telugu)</option>
+                                        <option value="mr">मराठी (Marathi)</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <label class="setting-label">Theme</label>
+                                    <select class="form-control" id="themeSetting">
+                                        <option value="auto" selected>Auto (System)</option>
+                                        <option value="light">Light</option>
+                                        <option value="dark">Dark</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data & Privacy Tab -->
+                <div id="dataTab" class="account-content">
+                    <div class="data-management-container">
+                        <div class="data-section">
+                            <h3>📊 Data Management</h3>
+                            <div class="data-actions">
+                                <div class="data-action-card">
+                                    <div class="data-action-icon">📤</div>
+                                    <div class="data-action-content">
+                                        <h4>Export Your Data</h4>
+                                        <p>Download all your learning progress, achievements, and farm data</p>
+                                        <button class="btn btn--primary enhanced-btn" onclick="exportUserData()">Export Data</button>
+                                    </div>
+                                </div>
+                                <div class="data-action-card">
+                                    <div class="data-action-icon">💾</div>
+                                    <div class="data-action-content">
+                                        <h4>Backup Progress</h4>
+                                        <p>Create a backup of your current progress and achievements</p>
+                                        <button class="btn btn--primary enhanced-btn" onclick="createBackup()">Create Backup</button>
+                                    </div>
+                                </div>
+                                <div class="data-action-card">
+                                    <div class="data-action-icon">🔄</div>
+                                    <div class="data-action-content">
+                                        <h4>Restore Data</h4>
+                                        <p>Restore your progress from a previous backup</p>
+                                        <button class="btn btn--outline enhanced-btn" onclick="restoreData()">Restore from Backup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="data-section danger-zone">
+                            <h3>⚠️ Danger Zone</h3>
+                            <div class="danger-actions">
+                                <div class="danger-action-card">
+                                    <div class="danger-content">
+                                        <h4>Reset All Progress</h4>
+                                        <p>This will permanently delete all your learning progress and achievements</p>
+                                        <button class="btn btn--outline enhanced-btn danger-btn" onclick="resetAllProgress()">Reset Progress</button>
+                                    </div>
+                                </div>
+                                <div class="danger-action-card">
+                                    <div class="danger-content">
+                                        <h4>Delete Account</h4>
+                                        <p>Permanently delete your account and all associated data</p>
+                                        <button class="btn btn--outline enhanced-btn danger-btn" onclick="deleteAccount()">Delete Account</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support Tab -->
+                <div id="supportTab" class="account-content">
+                    <div class="support-container">
+                        <div class="support-section">
+                            <h3>❓ Frequently Asked Questions</h3>
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>How do I complete a learning course?</span>
+                                        <span class="faq-toggle">+</span>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>To complete a course, read through all lessons and pass the quiz with at least 70% score. You'll earn a certificate upon completion.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>How do I participate in community discussions?</span>
+                                        <span class="faq-toggle">+</span>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>Go to the Community tab, select Discussions, and click "New Post" to start a discussion or reply to existing topics.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>How do I change my avatar?</span>
+                                        <span class="faq-toggle">+</span>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>Visit the Account tab, select Avatar, choose from available animal companions, and customize with accessories.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="support-section">
+                            <h3>📞 Contact Support</h3>
+                            <div class="contact-options">
+                                <div class="contact-card">
+                                    <div class="contact-icon">📧</div>
+                                    <h4>Email Support</h4>
+                                    <p>Get detailed help via email</p>
+                                    <button class="btn btn--primary enhanced-btn" onclick="contactSupport('email')">Send Email</button>
+                                </div>
+                                <div class="contact-card">
+                                    <div class="contact-icon">💬</div>
+                                    <h4>Live Chat</h4>
+                                    <p>Chat with our support team</p>
+                                    <button class="btn btn--primary enhanced-btn" onclick="contactSupport('chat')">Start Chat</button>
+                                </div>
+                                <div class="contact-card">
+                                    <div class="contact-icon">📚</div>
+                                    <h4>User Guide</h4>
+                                    <p>Comprehensive tutorial</p>
+                                    <button class="btn btn--outline enhanced-btn" onclick="showTutorial()">View Guide</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="support-section">
+                            <h3>🚪 Account Actions</h3>
+                            <div class="account-actions">
+                                <button class="btn btn--outline enhanced-btn logout-btn" onclick="showLogoutConfirmation()">🚪 Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Modals -->
+    <div id="courseModal" class="modal hidden">
+        <div class="modal-content course-modal">
+            <div class="modal-header">
+                <h3 id="courseModalTitle">Course Title</h3>
+                <button class="modal-close enhanced-btn" onclick="closeModal('courseModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="course-details" id="courseDetails">
+                    <!-- Course details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="quizModal" class="modal hidden">
+        <div class="modal-content quiz-modal">
+            <div class="modal-header">
+                <h3 id="quizModalTitle">Quiz</h3>
+                <button class="modal-close enhanced-btn" onclick="closeModal('quizModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="quiz-container" id="quizContainer">
+                    <!-- Quiz content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="achievementModal" class="modal hidden">
+        <div class="modal-content achievement-modal">
+            <div class="modal-header">
+                <h3>🎉 Achievement Unlocked!</h3>
+                <button class="modal-close enhanced-btn" onclick="closeModal('achievementModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="achievement-display">
+                    <div class="achievement-icon celebration" id="achievementIcon">🏆</div>
+                    <h4 id="achievementName">Achievement Name</h4>
+                    <p id="achievementDescription">Achievement description</p>
+                    <div class="achievement-rewards" id="achievementRewards"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--primary enhanced-btn" onclick="closeModal('achievementModal')">🎊 Awesome!</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="logoutModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🚪 Confirm Logout</h3>
+                <button class="modal-close enhanced-btn" onclick="closeModal('logoutModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to logout? Your progress will be saved automatically.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--secondary enhanced-btn" onclick="closeModal('logoutModal')">Cancel</button>
+                <button class="btn btn--primary enhanced-btn" onclick="confirmLogout()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
